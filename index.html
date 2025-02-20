@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Lab Assistant</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Chat Container */
+    #chat-box {
+      width: 400px;
+      height: 600px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Chat Header */
+    #chat-header {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 20px 20px 0 0;
+    }
+
+    /* Chat Output (Message Area) */
+    #chat-output {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      background: #f9f9f9;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Message Bubbles */
+    .message {
+      margin-bottom: 15px;
+      display: flex;
+    }
+
+    .message.user {
+      justify-content: flex-end;
+    }
+
+    .message.bot {
+      justify-content: flex-start;
+    }
+
+    .message p {
+      max-width: 70%;
+      padding: 10px 15px;
+      border-radius: 15px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .message.user p {
+      background: #6a11cb;
+      color: white;
+      border-radius: 15px 15px 0 15px;
+    }
+
+    .message.bot p {
+      background: #e0e0e0;
+      color: #333;
+      border-radius: 15px 15px 15px 0;
+    }
+
+    /* Chat Input Area */
+    #chat-input-area {
+      display: flex;
+      padding: 10px;
+      background: #fff;
+      border-top: 1px solid #eee;
+    }
+
+    #user-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    #send-button {
+      background: #6a11cb;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s ease;
+    }
+
+    #send-button:hover {
+      background: #2575fc;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message {
+      animation: fadeIn 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-box">
+    <!-- Chat Header -->
+    <div id="chat-header">
+      AI Lab Assistant 🤖
+    </div>
+
+    <!-- Chat Output (Messages) -->
+    <div id="chat-output">
+      <div class="message bot">
+        <p>Hi there! 👋 I'm your AI Lab Assistant. How can I help you today?</p>
+      </div>
+    </div>
+
+    <!-- Chat Input Area -->
+    <div id="chat-input-area">
+      <input type="text" id="user-input" placeholder="Type your message...">
+      <button id="send-button" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    // Function to send a message
+    async function sendMessage() {
+      const userInput = document.getElementById('user-input');
+      const chatOutput = document.getElementById('chat-output');
+
+      // Add user message to chat
+      if (userInput.value.trim() !== "") {
+        const userMessage = document.createElement('div');
+        userMessage.className = 'message user';
+        userMessage.innerHTML = `<p>${userInput.value}</p>`;
+        chatOutput.appendChild(userMessage);
+
+        // Clear input
+        const inputText = userInput.value;
+        userInput.value = '';
+
+        // Simulate AI response (replace with API call)
+        setTimeout(() => {
+          const botMessage = document.createElement('div');
+          botMessage.className = 'message bot';
+          botMessage.innerHTML = `<p>You said: "${inputText}". I'm still learning, but I'll help as much as I can!</p>`;
+          chatOutput.appendChild(botMessage);
+
+          // Scroll to bottom
+          chatOutput.scrollTop = chatOutput.scrollHeight;
+        }, 1000);
+      }
+    }
+
+    // Allow pressing "Enter" to send message
+    document.getElementById('user-input').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>
