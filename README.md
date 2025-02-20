@@ -1,12 +1,12 @@
 # DeepSeek Chatbot
 
-![deep-seek](./assets/logo_deep-seek.png?raw=true)
+![deep-seek]
 
 This is a prototype chatbot application built using Streamlit and OpenAI's API. The chatbot interacts with users and provides responses based on the DeepSeek model.
 
 ## Features
-![deep-seek](./assets/deepseek-text.svg?raw=true)
-![deep-seek](./assets/deepseek-color.svg?raw=true)
+![deep-seek]
+![deep-seek]
 
 - Interactive chatbot interface
 - Customizable temperature setting for response variability
@@ -22,8 +22,8 @@ This is a prototype chatbot application built using Streamlit and OpenAI's API. 
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/AbeTavarez/deepseek-chatbot.git
-    cd deepseek-chatbot
+    git clone https://github.com/lucifer-122/chatbot-using-deeepseek.git
+    cd chatbot-using-deeepseek
     ```
 
 2. Install the required packages:
